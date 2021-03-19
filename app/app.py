@@ -31,9 +31,24 @@ def get_input():
 
     return lines
 
+def print_app_info():
+    print('Calculates attack multiplier for pokemon types.')
+    print('Uses Pokemon API - pokeapi.co to download data.\n')
+    print('Input multiple-lines (end of input when entered empty line):')
+    print('[attacking_pokemon_type] -> [defencing_pokemon_type1] [defencing_pokemon_type2] ... [defencing_pokemon_typeN]\n')
+    print('Output:')
+    print('Attack multiplier - example: 4x\n')
+    print('Example app execution:')
+    print('fire -> grass')
+    print('ice -> grass rock\n')
+    print('2x')
+    print('2x')
+    print('-' * 20)
 
 def app():
     print('Task - Pokemon types')
+    print_app_info()
+
     lines = get_input()
 
     attacking_pokemons = parse_input_to_attacking_pokemons(lines)
