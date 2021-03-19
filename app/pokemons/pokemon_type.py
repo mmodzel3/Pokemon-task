@@ -5,3 +5,9 @@ class PokemonType:
     @property
     def type(self):
         return self._type
+
+    def __str__(self):
+        return str(self._type)
+
+    def __repr__(self):
+        return str(self._type)
