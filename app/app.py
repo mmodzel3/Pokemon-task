@@ -37,4 +37,7 @@ def app():
     lines = get_input()
 
     attacking_pokemons = parse_input_to_attacking_pokemons(lines)
-    print(attacking_pokemons)
+
+    for pokemons in attacking_pokemons:
+        multiplier = pokemons[0].calculate_attack_multiplier(pokemons[1])
+        print(str(multiplier) + 'x')

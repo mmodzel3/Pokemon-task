@@ -1,4 +1,4 @@
-import requests
+from app.pokemons.pokemon_server import PokemonServer
 
 
 class PokemonType:
@@ -15,8 +15,17 @@ class PokemonType:
     def __repr__(self):
         return str(self._type)
 
-    def _get_data(self):
-        url = 'https://pokeapi.co/api/v2/type/{}'.format(self._type)
+    def calculate_attack_multiplier(self, pokemon_types):
+        data = PokemonServer.get_type_data(self._type)
 
-        response = requests.get(url)
-        return response.json()
+        attack_multiplier = 1
+        for pokemon_type in pokemon_types:
+            if pokemon_type.type in data['double_damage_to']:
+                attack_multiplier *= 2
+            elif pokemon_type.type in data['half_damage_to']:
+                attack_multiplier *= 0.5
+            elif pokemon_type.type in data['no_damage_to']:
+                attack_multiplier = 0
+                break
+
+        return attack_multiplier
